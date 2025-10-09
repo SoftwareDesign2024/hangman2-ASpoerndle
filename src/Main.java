@@ -2,7 +2,12 @@ import game.HangmanGame;
 import game.HangmanGameAutoGuesser;
 import game.HangmanGameCheatingComputer;
 import util.HangmanDictionary;
-
+import game.Executioner;
+import game.ExecutionerCheat;
+import game.ExecutionerHuman;
+import game.Guesser;
+import game.GuesserAuto;
+import game.Guesser;
 
 /**
  * This class launches the Hangman game and plays once.
@@ -19,8 +24,20 @@ public class Main {
 
 
     public static void main (String[] args) {
-        //new HangmanGameInteractiveGuesser(new HangmanDictionary(DICTIONARY), NUM_LETTERS, NUM_MISSES).play();
+    	
+    	/*
+    	 * Computer that cheats the secret word = exeAuto
+    	 * Computer that keeps one secret word = exeComp
+    	 * You play as the person with secret word = exeHuman
+    	 * Auto guesser = guesserAuto
+    	 * Computer guesser = guesserComp
+    	 * You play as a guesser = guesser
+    	 */
+    	Executioner execute = new Executioner();
+    	GuesserAuto guess = new GuesserAuto();
+    	
+        new HangmanGame(new HangmanDictionary(DICTIONARY), NUM_LETTERS, NUM_MISSES, guess, execute).play();
         //new HangmanGameAutoGuesser(new HangmanDictionary(DICTIONARY), NUM_LETTERS, NUM_MISSES).play();
-    	new HangmanGameCheatingComputer(new HangmanDictionary(DICTIONARY), NUM_LETTERS, NUM_MISSES).play();
+    	//new HangmanGameCheatingComputer(new HangmanDictionary(DICTIONARY), NUM_LETTERS, NUM_MISSES).play();
     }
 }
